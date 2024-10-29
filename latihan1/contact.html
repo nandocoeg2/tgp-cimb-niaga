@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact US</title>
+    <style>
+      #navigation {
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Contact Us</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.
+    </p>
+    <nav id="navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <br />
+
+    <form action="contact.html" method="get">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" />
+      </div>
+      <div>
+        <label for="email">Email </label>
+        <input type="email" name="email" id="email" />
+      </div>
+      <div>
+        <label for="phone">Phone</label>
+        <input type="tel" name="phone" id="phone" />
+      </div>
+      <div>
+        <label for="date">Date</label>
+        <input type="date" name="date" id="date" />
+      </div>
+      <div>
+        <label for="message">Message</label>
+        <textarea name="message" id="message" cols="30" rows="10"></textarea>
+      </div>
+      <div style="display: flex; align-items: center">
+        <input type="radio" id="laki-laki" name="laki-laki" />
+        <label for="laki-laki">Laki-laki</label>
+        <input type="radio" id="perempuan" name="perempuan" />
+        <label for="perempuan">Perempuan</label>
+      </div>
+      <div>
+        <input type="checkbox" id="agree" name="agree" required />
+        <label for="agree">I agree to the terms and conditions</label>
+      </div>
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </body>
+</html>
