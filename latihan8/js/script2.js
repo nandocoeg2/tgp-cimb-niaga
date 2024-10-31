@@ -17,7 +17,7 @@ function editProfile() {
   const inputName = document.getElementById("inputName");
   inputName.value = name.textContent;
   const inputRole = document.getElementById("inputRole");
-  inputRole.value = desc.textContent;
+  inputRole.value = desc.innerText;
   const inputAvailability = document.getElementById("inputAvailability");
   inputAvailability.value = availability.textContent;
   const inputAge = document.getElementById("inputAge");
