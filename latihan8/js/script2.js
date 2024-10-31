@@ -18,6 +18,8 @@ const inputFields = [
   "inputEmail",
 ];
 
+const editForm = document.getElementById("form-contact");
+
 function toggleHidden() {
   const form = document.getElementById("form");
   form.classList.toggle("hidden");
@@ -33,7 +35,9 @@ function editProfile() {
   });
 }
 
-function saveProfile() {
+editForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
   idDisplays.forEach((id, index) => {
     const profile = document.getElementById(id);
     const input = document.getElementById(inputFields[index]);
@@ -41,7 +45,7 @@ function saveProfile() {
   });
 
   resetForm();
-}
+});
 
 function resetForm() {
   for (let i = 0; i < idDisplays.length; i++) {
