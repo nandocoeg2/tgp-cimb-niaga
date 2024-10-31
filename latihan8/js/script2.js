@@ -1,3 +1,23 @@
+const idDisplays = [
+  "profile-name",
+  "profile-desc",
+  "profile-availability",
+  "profile-age",
+  "profile-location",
+  "profile-experience",
+  "profile-email",
+];
+
+const inputFields = [
+  "inputName",
+  "inputRole",
+  "inputAvailability",
+  "inputAge",
+  "inputLokasi",
+  "inputExperience",
+  "inputEmail",
+];
+
 function editProfile() {
   const cekForm = document.getElementById("form");
   if (cekForm.classList.contains("hidden")) {
@@ -6,66 +26,41 @@ function editProfile() {
     cekForm.classList.add("hidden");
   }
 
-  const name = document.getElementById("profile-name");
-  const desc = document.getElementById("profile-desc");
-  const availability = document.getElementById("profile-availability");
-  const age = document.getElementById("profile-age");
-  const location = document.getElementById("profile-location");
-  const experience = document.getElementById("profile-experience");
-  const email = document.getElementById("profile-email");
+  // get variable from id array
+  idDisplays.forEach((item) => {
+    const profile = document.getElementById(item);
+    console.log(profile.innerText);
+  });
 
-  const inputName = document.getElementById("inputName");
-  inputName.value = name.textContent;
-  const inputRole = document.getElementById("inputRole");
-  inputRole.value = desc.innerText;
-  const inputAvailability = document.getElementById("inputAvailability");
-  inputAvailability.value = availability.textContent;
-  const inputAge = document.getElementById("inputAge");
-  inputAge.value = age.textContent;
-  const inputLocation = document.getElementById("inputLokasi");
-  inputLocation.value = location.textContent;
-  const inputExperience = document.getElementById("inputExperience");
-  inputExperience.value = experience.textContent;
-  const inputEmail = document.getElementById("inputEmail");
-  inputEmail.value = email.textContent;
+  // set value input from profile
+  for (let i = 0; i < idDisplays.length; i++) {
+    const profile = document.getElementById(idDisplays[i]);
+    const input = document.getElementById(inputFields[i]);
+    input.value = profile.innerText;
+  }
 }
 
 function saveProfile() {
-  const inputName = document.getElementById("inputName");
-  const inputRole = document.getElementById("inputRole");
-  const inputAvailability = document.getElementById("inputAvailability");
-  const inputAge = document.getElementById("inputAge");
-  const inputLocation = document.getElementById("inputLokasi");
-  const inputExperience = document.getElementById("inputExperience");
-  const inputEmail = document.getElementById("inputEmail");
+  for (let i = 0; i < idDisplays.length; i++) {
+    const profile = document.getElementById(idDisplays[i]);
+    const input = document.getElementById(inputFields[i]);
+    profile.innerText = input.value;
+  }
 
-  const name = document.getElementById("profile-name");
-  const desc = document.getElementById("profile-desc");
-  const availability = document.getElementById("profile-availability");
-  const age = document.getElementById("profile-age");
-  const location = document.getElementById("profile-location");
-  const experience = document.getElementById("profile-experience");
-  const email = document.getElementById("profile-email");
-
-  name.textContent = inputName.value;
-  desc.textContent = inputRole.value;
-  availability.textContent = inputAvailability.value;
-  age.textContent = inputAge.value;
-  location.textContent = inputLocation.value;
-  experience.textContent = inputExperience.value;
-  email.textContent = inputEmail.value;
+  for (let i = 0; i < idDisplays.length; i++) {
+    const profile = document.getElementById(idDisplays[i]);
+    const input = document.getElementById(inputFields[i]);
+    input.value = profile.innerText;
+  }
 
   resetForm();
 }
 
 function resetForm() {
-  document.getElementById("inputName").value = "";
-  document.getElementById("inputRole").value = "";
-  document.getElementById("inputAvailability").value = "";
-  document.getElementById("inputAge").value = "";
-  document.getElementById("inputLokasi").value = "";
-  document.getElementById("inputExperience").value = "";
-  document.getElementById("inputEmail").value = "";
+  for (let i = 0; i < idDisplays.length; i++) {
+    const input = document.getElementById(inputFields[i]);
+    input.value = "";
+  }
 
   const cekForm = document.getElementById("form");
   cekForm.classList.add("hidden");
