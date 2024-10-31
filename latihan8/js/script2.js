@@ -18,40 +18,27 @@ const inputFields = [
   "inputEmail",
 ];
 
+function toggleHidden() {
+  const form = document.getElementById("form");
+  form.classList.toggle("hidden");
+}
+
 function editProfile() {
-  const cekForm = document.getElementById("form");
-  if (cekForm.classList.contains("hidden")) {
-    cekForm.classList.remove("hidden");
-  } else {
-    cekForm.classList.add("hidden");
-  }
+  toggleHidden();
 
-  // get variable from id array
-  idDisplays.forEach((item) => {
-    const profile = document.getElementById(item);
-    console.log(profile.innerText);
-  });
-
-  // set value input from profile
-  for (let i = 0; i < idDisplays.length; i++) {
-    const profile = document.getElementById(idDisplays[i]);
-    const input = document.getElementById(inputFields[i]);
+  idDisplays.forEach((id, index) => {
+    const profile = document.getElementById(id);
+    const input = document.getElementById(inputFields[index]);
     input.value = profile.innerText;
-  }
+  });
 }
 
 function saveProfile() {
-  for (let i = 0; i < idDisplays.length; i++) {
-    const profile = document.getElementById(idDisplays[i]);
-    const input = document.getElementById(inputFields[i]);
+  idDisplays.forEach((id, index) => {
+    const profile = document.getElementById(id);
+    const input = document.getElementById(inputFields[index]);
     profile.innerText = input.value;
-  }
-
-  for (let i = 0; i < idDisplays.length; i++) {
-    const profile = document.getElementById(idDisplays[i]);
-    const input = document.getElementById(inputFields[i]);
-    input.value = profile.innerText;
-  }
+  });
 
   resetForm();
 }
@@ -62,6 +49,5 @@ function resetForm() {
     input.value = "";
   }
 
-  const cekForm = document.getElementById("form");
-  cekForm.classList.add("hidden");
+  toggleHidden();
 }
