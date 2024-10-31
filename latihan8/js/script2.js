@@ -14,7 +14,6 @@ function editProfile() {
   const experience = document.getElementById("profile-experience");
   const email = document.getElementById("profile-email");
 
-  // set name to inputName
   const inputName = document.getElementById("inputName");
   inputName.value = name.textContent;
   const inputRole = document.getElementById("inputRole");
@@ -32,7 +31,6 @@ function editProfile() {
 }
 
 function saveProfile() {
-  console.log("Save Profile");
   const inputName = document.getElementById("inputName");
   const inputRole = document.getElementById("inputRole");
   const inputAvailability = document.getElementById("inputAvailability");
