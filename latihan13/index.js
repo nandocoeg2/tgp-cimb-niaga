@@ -68,6 +68,8 @@ function main() {
 
   console.log("Saldo Akhir Pelanggan:");
   console.table(saldoAkhir);
+
+  console.log("Pelanggan dengan saldo rendah:");
   console.log("Pelanggan dengan saldo rendah:");
   console.table(saldoRendah);
   console.log("Total Debit Pelanggan:");
