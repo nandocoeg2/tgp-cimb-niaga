@@ -18,8 +18,6 @@ const inputFields = [
   "inputEmail",
 ];
 
-const editForm = document.getElementById("form-contact");
-
 function toggleHidden() {
   const form = document.getElementById("form");
   form.classList.toggle("hidden");
@@ -35,6 +33,7 @@ function editProfile() {
   });
 }
 
+const editForm = document.getElementById("form-contact");
 editForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
