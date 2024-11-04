@@ -66,7 +66,6 @@ function main() {
   const saldoRendah = filterSaldoRendah(saldoAkhir);
   const totalDebitPelanggan = totalDebit(pelanggan);
 
-  console.log("Saldo Akhir Pelanggan:");
   console.table(saldoAkhir);
   console.log("Pelanggan dengan saldo rendah:");
   console.table(saldoRendah);
