@@ -103,3 +103,23 @@ function listPrime(firstNumber, secondNumber) {
 
 // console.log(listPrime(1, 10));
 // console.log(listPrime(5, 10));
+
+function selectionSort(numbers) {
+  let temp;
+  for (let i = 0; i < numbers.length - 1; i++) {
+    let minIndex = i;
+    for (let j = i + 1; j < numbers.length; j++) {
+      if (numbers[j] < numbers[minIndex]) {
+        minIndex = j;
+      }
+    }
+    temp = numbers[i];
+    numbers[i] = numbers[minIndex];
+    numbers[minIndex] = temp;
+  }
+}
+
+const numbers = [5, 3, 8, 4, 1, 2];
+selectionSort(numbers);
+
+console.log(numbers);
