@@ -35,9 +35,9 @@
         </button>
         <!-- </form> -->
       </div>
+      <!-- Task 4: Create a logout button to clear session storage -->
       <button id="logout-btn" onclick="logoutButton()">Logout</button>
     </div>
-    <!-- Task 4: Create a logout button to clear session storage -->
     <script>
       // Task 1: Handle user login and save the username in session storage
       //   check if the user is already logged in
@@ -58,14 +58,12 @@
       }
 
       // Task 2: Handle adding new transactions to localStorage
-
       function buttonAddTransaction() {
         const amount = document.getElementById("amount").value;
         if (amount < 1) {
           alert("Amount must be greater than 0");
           return;
         }
-        console.log(amount);
         const transactions =
           JSON.parse(localStorage.getItem("transactions")) || [];
         const format = {
@@ -82,9 +80,7 @@
       if (!sessionStorage.getItem("username")) {
         document.getElementById("daftar-transaksi").style.display = "none";
       }
-      if (localStorage.getItem("transactions")) {
-        renderTransactions();
-      }
+
       function renderTransactions() {
         const transactionList = document.getElementById("transaction-list");
         const transactions =
@@ -108,6 +104,10 @@
 
       // Task 4: Handle user logout, clear session storage, and reload the page
       function logoutButton() {
+        const checkConfirm = confirm("Are you sure you want to logout?");
+        if (!checkConfirm) {
+          return;
+        }
         sessionStorage.removeItem("username");
         localStorage.removeItem("transactions");
         location.reload();
