@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <title>Fintech App Transaksi</title>
+  <body>
+    <h1>Fintech Transaction Management</h1>
+    <!-- Task 1: Create a simple login form to input the user's name -->
+    <div id="login-form">
+      <label for="username">Enter Username: </label>
+      <input type="text" id="username" />
+      <button id="login-btn" type="button" onclick="loginButton()">
+        Login
+      </button>
+    </div>
+    <div id="daftar-transaksi">
+      <h2>Daftar Transaksi</h2>
+      <ul id="transaction-list">
+        <!-- Task 3: Display the list of transactions stored in localStorage here -->
+      </ul>
+      <!-- Task 2: Create a form to add new transactions -->
+      <div id="transaction-form">
+        <!-- <form onsubmit="addTransaction()"> -->
+        <label for="amount">Transaction Amount: </label>
+        <input type="number" id="amount" placeholder="Enter amount" />
+        <button
+          id="add-transaction-btn"
+          type="button"
+          onclick="buttonAddTransaction()"
+        >
+          Add Transaction
+        </button>
+        <!-- </form> -->
+      </div>
+      <button id="logout-btn" onclick="logoutButton()">Logout</button>
+    </div>
+    <!-- Task 4: Create a logout button to clear session storage -->
+    <script>
+      // Task 1: Handle user login and save the username in session storage
+      //   check if the user is already logged in
+      const username = sessionStorage.getItem("username");
+      if (username) {
+        document.getElementById(
+          "login-form"
+        ).innerHTML = `<p>Welcome, ${username}!</p>`;
+      }
+      const usernameInput = document.getElementById("username");
+      function loginButton() {
+        const username = usernameInput.value;
+        sessionStorage.setItem("username", username);
+        document.getElementById(
+          "login-form"
+        ).innerHTML = `<p>Welcome, ${username}!</p>`;
+        document.getElementById("daftar-transaksi").style.display = "block";
+      }
+
+      // Task 2: Handle adding new transactions to localStorage
+
+      function buttonAddTransaction() {
+        const amount = document.getElementById("amount").value;
+        if (amount < 1) {
+          alert("Amount must be greater than 0");
+          return;
+        }
+        console.log(amount);
+        const transactions =
+          JSON.parse(localStorage.getItem("transactions")) || [];
+        const format = {
+          id: transactions.length + 1,
+          jumlah: amount,
+          status: "Pending",
+        };
+        transactions.push(format);
+        localStorage.setItem("transactions", JSON.stringify(transactions));
+        renderTransactions();
+      }
+
+      // Task 3: Display the list of transactions from localStorage when the page is loaded
+      if (!sessionStorage.getItem("username")) {
+        document.getElementById("daftar-transaksi").style.display = "none";
+      }
+      if (localStorage.getItem("transactions")) {
+        renderTransactions();
+      }
+      function renderTransactions() {
+        const transactionList = document.getElementById("transaction-list");
+        const transactions =
+          JSON.parse(localStorage.getItem("transactions")) || [];
+
+        //   check if there are transactions
+        if (transactions.length === 0) {
+          transactionList.innerHTML = "<li>No transactions yet!</li>";
+          return;
+        }
+        transactionList.innerHTML = "";
+        transactions.forEach((transaction, index) => {
+          const li = document.createElement("li");
+          li.textContent = `ID ${index + 1} - Jumlah : ${
+            transaction.jumlah
+          } - Status : ${transaction.status}`;
+          transactionList.appendChild(li);
+        });
+      }
+      renderTransactions();
+
+      // Task 4: Handle user logout, clear session storage, and reload the page
+      function logoutButton() {
+        sessionStorage.removeItem("username");
+        localStorage.removeItem("transactions");
+        location.reload();
+      }
+    </script>
+  </body>
+</html>
