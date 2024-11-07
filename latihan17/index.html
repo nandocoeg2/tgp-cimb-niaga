@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Local Storage</h1>
+
+    <button id="todo-save">Save</button>
+    <button id="todo-delete">Delete</button>
+
+    <table id="todo-data">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Title</th>
+          <th>Completed</th>
+        </tr>
+      </thead>
+      <tbody id="todo-list"></tbody>
+    </table>
+
+    <script>
+      const dataToPush = {
+        title: "Belajar Local Storage",
+        completed: false,
+      };
+
+      const todoList = document.getElementById("todo-list");
+      const todoSave = document.getElementById("todo-save");
+      const todoDelete = document.getElementById("todo-delete");
+
+      //   get data from local storage
+      const data = JSON.parse(localStorage.getItem("todos")) || [];
+
+      function renderData() {
+        todoList.innerHTML = "";
+        data.forEach((item, index) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${item.title}</td>
+            <td>${item.completed ? "Done" : "Not Done"}</td>
+          `;
+          todoList.appendChild(row);
+        });
+      }
+
+      todoSave.addEventListener("click", () => {
+        data.push(dataToPush);
+        localStorage.setItem("todos", JSON.stringify(data));
+        renderData();
+      });
+
+      todoDelete.addEventListener("click", () => {
+        data.pop();
+        localStorage.setItem("todos", JSON.stringify(data));
+        renderData();
+      });
+
+      renderData();
+    </script>
+  </body>
+</html>
